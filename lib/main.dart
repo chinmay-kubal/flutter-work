@@ -264,7 +264,7 @@ class MyApp extends StatelessWidget {
 // ------------------------------------------------------------------------------------
 
 // qr code code
-// // not workking..
+// properly working..
 // import 'package:flutter/material.dart';
 // import 'qr_scan_page.dart';
 
