@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:permission_handler/permission_handler.dart';
 
 class QRScanPage extends StatefulWidget {
   @override
@@ -12,12 +13,31 @@ class _QRScanPageState extends State<QRScanPage> {
   String _result = '';
 
   Future<void> _scanQRCode() async {
-    String? qrCode = await scanner.scan();
+    final status = await Permission.camera.request();
 
-    if (qrCode != null) {
-      setState(() {
-        _result = qrCode;
-      });
+    if (status == PermissionStatus.granted) {
+      String? qrCode = await scanner.scan();
+
+      if (qrCode != null) {
+        setState(() {
+          _result = qrCode;
+        });
+      }
+    } else {
+      // Permission denied
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text('Camera permission denied'),
+          content: Text('Please grant camera permission to scan QR codes.'),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
