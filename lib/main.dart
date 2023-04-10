@@ -229,39 +229,6 @@ class MyApp extends StatelessWidget {
 // }
 
 // ------------------------------------------------------------------------------------
-// //  voice control code..
-// partly working..
-
-// import 'package:flutter/material.dart';
-// import './voice_control.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Your App Name',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('Your App Name'),
-//         ),
-//         body: Center(
-//           child: VoiceControl(),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-// ------------------------------------------------------------------------------------
 
 // qr code code
 // properly working..
@@ -282,3 +249,23 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+
+// ------------------------------------------------------------------------------------
+//  voice control code..
+//  working..
+import 'package:flutter/material.dart';
+import 'voice_typing_screen.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Voice Typing Demo',
+      home: VoiceTypingScreen(),
+    );
+  }
+}
